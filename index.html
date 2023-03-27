@@ -1,0 +1,134 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Mysite</title>
+
+    <!-- link styles -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="style.css" rel="stylesheet">
+
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Mysite</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Principal</a>
+            <a class="nav-link" href="#">Pronto</a>
+            <a class="nav-link" href="#"></a>
+            <a id="dark-mode-button" class="btn btn-light">🌚</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1>Tavo Chavez</h1>
+        <p>Software developer with 2 years of experience in software engineering, programming, web design, React, 
+          JavaScript and Python. I am passionate about esports, reading and
+          soccer.
+        </p>
+  
+      <form id="password-form">
+        <label for="password">Enter the password to view your notes:</label>
+        <input type="password" id="password">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+  
+      <div id="notes-container" style="display:none;">
+        <h2>Mis notas</h2>
+        <p>Aquí puedes guardar tus notas:</p>
+        <textarea id="notes"></textarea>
+        <button id="save-button" class="btn btn-primary">Guardar</button>
+      </div>
+      </main>
+
+      
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p> gmanvv <a href="https://www.twitch.tv/gmanvv">twitch</a>, ig <a href="https://www.instagram.com/tavodll/"> instagram </a>.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      var darkModeButton = document.getElementById("dark-mode-button");
+      
+      // Agrega un evento de escucha al botón
+      darkModeButton.addEventListener("click", function() {
+        // Obtiene el contenido actual del botón (el emoji)
+        const currentEmoji = darkModeButton.textContent;
+
+        // Cambia el emoji según el estado actual
+        if (currentEmoji === "🌚") {
+          darkModeButton.textContent = "🌞";
+        } else {
+          darkModeButton.textContent = "🌚";
+        }
+      });
+      const body = document.querySelector('body');
+
+      darkModeButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+    });
+
+
+    </script>
+    <script>
+      // Función para verificar la contraseña ingresada
+      function checkPassword() {
+        var password = document.getElementById("password").value;
+        if (password === "password123") { // Aquí puedes cambiar la contraseña
+          document.getElementById("password-form").style.display = "none";
+          document.getElementById("notes-container").style.display = "block";
+          loadNotes();
+        } else {
+          alert("Contraseña incorrecta. Inténtalo de nuevo.");
+        }
+      }
+      
+      // Función para guardar las notas
+      function saveNotes() {
+        var notes = document.getElementById("notes").value;
+        localStorage.setItem("notes", notes);
+        alert("Notas guardadas correctamente.");
+      }
+
+      // Función para cargar las notas guardadas
+      function loadNotes() {
+        var notes = localStorage.getItem("notes");
+        if (notes) {
+          document.getElementById("notes").value = notes;
+        }
+      }
+      // Eventos de JavaScript
+      document.getElementById("password-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        checkPassword();
+      });
+
+      document.getElementById("save-button").addEventListener("click", function() {
+        saveNotes();
+      });
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
